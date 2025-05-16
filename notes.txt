@@ -1,0 +1,33 @@
+
+This works great.
+(It only works for @foreverfoundry.com emails because I set it to internal only)
+
+index.html
+function authenticate() sends for /auth-url in server.js
+
+
+server.js 
+oauth2Client uses CLIENT_ID CLIENT_SECRET & REDIRECT_URI which i set in google console console.cloud.google.com/apis.
+In console.cloud.google.com/apis what you do is create a project.
+For that project turn on Google Docs API.
+Configure Oauth consent screen
+Type: Web application
+Authorized JavaScript origins: localhost:3000
+Authorized redirect URIs: localhost:3000/oauth2callback
+
+Copy the CLIENT_ID CLIENT_SECRET & REDIRECT_URI
+
+that whole function returns to the index.html the url res.json({ url: authUrl });
+sends the user to the url by doing this:  window.location.href = url;
+
+That takes them to a google approval page.
+Once they approve they are sent back to the REDIRECT_URI in this case localhost:3000/oauth2callback
+And in the url they also have ?code=ABC123&scope=XYZ
+We can then use the code to create a document 
+title: 'Titl'
+text: 'Hello world'
+
+
+
+
+
