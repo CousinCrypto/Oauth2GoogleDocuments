@@ -1,0 +1,36 @@
+Go to: https://console.cloud.google.com/ 
+
+Create a new project. [Name + add Billing account]
+In the top search bar search for “Google Docs API”.
+Enable the Google Docs API - select the project you just created.
+Click “OAuth consent screen” then “Get started”. [Name + add email + (Internal or External - depending on whether you have a company email yet)]
+Click “Create OAuth client” then “OAuth client ID”
+
+Type: Web application
+Authorized JavaScript origins: localhost:3000
+Authorized redirect URIs: localhost:3000/oauth2callback
+
+Copy the CLIENT_ID CLIENT_SECRET & REDIRECT_URI
+
+Paste the CLIENT_ID & CLIENT_SECRET into the .env file
+
+IT SHOULD LOOK LIKE THIS:
+CLIENT_ID=YOUR_CLIENT_ID
+CLIENT_SECRET=YOUR_CLIENT_SECRET 
+
+If testing you can run it locally with localhost:3000 
+But when pushing to live you will need to change to your domain name.
+
+Go to "Audience" and then add your email under "Test users"
+
+
+To run: 
+npm install googleapis dotenv path axios mongodb body-parser express
+node server.js
+
+What this code will do is create a website on http://localhost:3000
+if you go there, click the button it will redirect you to a google authentication page.
+Once you have accepted you will be redirected back to http://localhost:3000 and a new google doc will be created for you in your google drive.
+
+title: 'Titl'
+text: 'Hello world'
